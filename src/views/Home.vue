@@ -1,7 +1,7 @@
 <template>
     <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png">
-        <HelloWorld class="title" msg="Welcome to Your Vue.js App"/>
+        <img alt="Vue logo" src="../assets/logo.png" />
+        <HelloWorld class="title" msg="Welcome to Your Vue.js App" />
     </div>
 </template>
 
@@ -19,6 +19,6 @@ export default {
 
 <style>
 .title {
-    color: #18ceaf;
+    color: #0fe4c0;
 }
 </style>
