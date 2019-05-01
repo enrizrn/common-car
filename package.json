@@ -9,6 +9,7 @@
         "deploy": "yarn run build && aws s3 cp dist/ s3://commoncar.es --recursive"
     },
     "dependencies": {
+        "firebase": "^5.10.1",
         "vue": "^2.6.6",
         "vue-router": "^3.0.1",
         "vuex": "^3.0.1"
