@@ -1,37 +1,39 @@
 <template>
     <div class="cc-home">
-        <main class="cc-registration-panel">
-            <div v-if="authUser">
-                <h2>Signed in as {{ authUser.email }}</h2>
-                <button @click="signOut">Sign out</button>
+        <main class="cc-home__registration-panel">
+            <section class="cc-home__registration-form">
+                <h1>Sign in to CommonCar</h1>
+                <div>or use your email account</div>
+                <q-form @submit="onSubmit">
+                    <q-input
+                        filled
+                        v-model="email"
+                        label="Email"
+                        type="email"
+                        lazy-rules
+                        :rules="[
+                            val =>
+                                (val && val.length > 0) ||
+                                'Please type something',
+                        ]"
+                    ></q-input>
+                </q-form>
+            </section>
+            <aside class="cc-home_registration-"></aside>
+
+            <!-- <div class="cc-home__sign-up-message">
+                <div>Welcome Back!</div>
             </div>
-            <div v-else>
-                <form @submit.prevent="register">
-                    <title>Register</title>
-                    <input type="email" v-model="email" placeholder="Email" />
-                    <input
-                        type="password"
-                        v-model="password"
-                        placeholder="Password"
-                    />
-                    <button>Register</button>
-                </form>
-                <form @submit.prevent="signIn">
-                    <title>Register</title>
-                    <input type="email" v-model="email" placeholder="Email" />
-                    <input
-                        type="password"
-                        v-model="password"
-                        placeholder="Password"
-                    />
-                    <button>Sign in</button>
-                </form>
-            </div>
+            <div class="cc-home__sign-in-message">
+                <div>Hello Friend!</div>
+            </div>-->
         </main>
     </div>
 </template>
 
 <script>
+import { QForm, QInput } from 'quasar';
+
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
@@ -45,6 +47,9 @@ export default {
     },
 
     methods: {
+        onSubmit() {
+            console.log('🚀');
+        },
         register() {
             firebase
                 .auth()
@@ -56,10 +61,16 @@ export default {
                 .auth()
                 .signInWithEmailAndPassword(this.email, this.password)
                 .catch(error => alert('☠️' + error.message));
+            this.$router.push({ path: 'dashboard' });
         },
         signOut() {
             firebase.auth().signOut();
         },
+    },
+
+    components: {
+        QForm,
+        QInput,
     },
 
     created() {
