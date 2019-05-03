@@ -81,7 +81,9 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="stylus">
+@import '~quasar-variables';
+
 .cc-home {
     align-items: center;
     background-color: #fbfbfb;
@@ -89,13 +91,19 @@ export default {
     height: 100vh;
     justify-content: center;
     width: 100vw;
-}
-.cc-registration-panel {
-    background-color: white;
-    border-radius: 17px;
-    box-shadow: 0px 7px 20px 3px rgba(0, 0, 0, 0.2),
-        0px 11px 18px 0px rgba(0, 0, 0, 0.12);
-    height: 497px;
-    width: 788px;
+
+    &__registration-panel {
+        background-color: white;
+        border-radius: 17px;
+        box-shadow: 0px 7px 20px 3px rgba(0, 0, 0, 0.2), 0px 11px 18px 0px rgba(0, 0, 0, 0.12);
+        height: 497px;
+        width: 788px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__registration-form {
+        width: 60%;
+    }
 }
 </style>
